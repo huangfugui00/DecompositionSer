@@ -1,0 +1,2 @@
+
+该文件夹下的每个js文件都是一个model对应的admin resource

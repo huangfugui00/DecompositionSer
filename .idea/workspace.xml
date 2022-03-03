@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="769ed3ac-1c88-4cc2-9cd2-34ebeb465021" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contract.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contract.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/customer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/feeling.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/feeling.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/reply.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/reply.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/subscription.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/subscription.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/controllers/video.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/models/comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/models/comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/models/reply.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/models/reply.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/models/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/models/video.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/routes/video.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube/routes/video.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../webDev/vue-project-21-self/express-youtube" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="25rAbKChG1Mf2Q0mz9CVvM5WCeD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\project\js\expressSer-main\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\webDev\vue-project-21-self\express-youtube\utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/src">
+      <method v="2" />
+    </configuration>
+    <configuration name="debug" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="debug" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.debug" />
+        <item itemvalue="Node.js.index.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="769ed3ac-1c88-4cc2-9cd2-34ebeb465021" name="Changes" comment="" />
+      <created>1646274903130</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1646274903130</updated>
+      <workItem from="1646274904300" duration="8621000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/utils/cdf.ts</url>
+          <line>21</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
