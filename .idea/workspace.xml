@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="769ed3ac-1c88-4cc2-9cd2-34ebeb465021" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/access.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/cdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/cdf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/cdf.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cdf.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" afterDir="false" />
@@ -129,7 +124,7 @@
       <option name="presentableId" value="Default" />
       <updated>1646274903130</updated>
       <workItem from="1646274904300" duration="15568000" />
-      <workItem from="1646312372156" duration="3216000" />
+      <workItem from="1646312372156" duration="4421000" />
     </task>
     <servers />
   </component>
