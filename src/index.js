@@ -26,8 +26,10 @@ app.use(cors())
 app.use(express.json())
 
 const cdfRouter= require('./route/cdf');
+const decompositeRouter= require('./route/decomposite');
 const versionOne = (routeName) => `/${routeName}`
 app.use(versionOne('cdf'), cdfRouter)
+app.use(versionOne('decomposite'), decompositeRouter)
 
 app.use(function (err, req, res, next) {
   console.error(err.stack);
