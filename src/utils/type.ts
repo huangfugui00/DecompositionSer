@@ -1,5 +1,5 @@
 export type estType={
-    curve:number[],
+    curve:{x:number[],y:number[]},
     peakTimePostion:number,
     peakTimeIndex:number,
     componentMz:number[],

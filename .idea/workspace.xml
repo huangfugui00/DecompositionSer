@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="769ed3ac-1c88-4cc2-9cd2-34ebeb465021" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/access.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/cdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/cdf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/decomposite.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/decomposite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/decomposite.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/decomposite.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/type.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" afterDir="false" />
@@ -130,7 +134,7 @@
       <workItem from="1646274904300" duration="15568000" />
       <workItem from="1646312372156" duration="8639000" />
       <workItem from="1646617495322" duration="20102000" />
-      <workItem from="1646701860667" duration="8683000" />
+      <workItem from="1646701860667" duration="32367000" />
     </task>
     <servers />
   </component>
@@ -152,32 +156,15 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/controller/decomposite.js</url>
-          <line>5</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/utils/cdf.ts</url>
           <line>63</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/utils/decomposite.ts</url>
-          <line>147</line>
+          <line>121</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/utils/decomposite.ts</url>
-          <line>137</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/controller/decomposite.js</url>
-          <line>10</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="48" />
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

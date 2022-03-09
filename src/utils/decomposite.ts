@@ -1,4 +1,5 @@
 import {estType} from './type'
+const Process = require('./process')
 
 class Decomposite{
     mzLen:number=0
@@ -31,10 +32,12 @@ class Decomposite{
             if(!this.isMatrix(this.alignPeaks)){
                 throw Error('alignPeaks is not a matrix')
             }
-            //扣背景
-            this.processAlignPeaks = this.alignPeaks.map((alignPeak)=>alignPeak.map(x=>x-Math.min(...alignPeak)))
-            const maxPeakIntenity = Math.max(...this.processAlignPeaks.map((alignPeaks)=>Math.max(...alignPeaks)))
-            this.processAlignPeaks = this.processAlignPeaks.map((alignPeak)=>alignPeak.map((peakIntensity)=>peakIntensity>this.minPeakIntensity*maxPeakIntenity?peakIntensity:0))
+            //扣背景.每个质量轴先把最小值扣掉
+            const minValues = this.mzArr.map((mz,i)=>Math.min(...this.alignPeaks.map((alignpeak)=>alignpeak[i])))
+            minValues.forEach((minValue,i)=>this.scanTimes.map((scanTimes,j)=>this.alignPeaks[j][i]-=minValue))
+            // this.alignPeaks = this.alignPeaks.map((alignPeak)=>alignPeak.map(x=>x-Math.min(...alignPeak)))
+            const maxPeakIntenity = Math.max(...this.alignPeaks.map((alignPeaks)=>Math.max(...alignPeaks)))
+            this.processAlignPeaks = this.alignPeaks.map((alignPeak)=>alignPeak.map((peakIntensity)=>peakIntensity>this.minPeakIntensity*maxPeakIntenity?peakIntensity:0))
             //寻峰
             let peakMz:number[]=[]
             let peakTime:number[]=[]
@@ -80,8 +83,11 @@ class Decomposite{
                 if(!result){
                     throw  Error('left right Err')
                 }
-                const estCurve = await this.getEstCurve(peakTimeIndex,componentMz,result.leftIdx,result.rightIdx,result.referenceMz)
-                est['curve']=estCurve
+                let estCurve = await this.getEstCurve(peakTimeIndex,componentMz,result.leftIdx,result.rightIdx,result.referenceMz)
+                const process=new Process()
+                estCurve = process.avgSmooth(estCurve,3)
+
+                est['curve']={y:estCurve,x:this.scanTimes}
                 est['componentMz']=componentMz
                 est['peakTimePostion'] = peakTimePosition
                 est['peakTimeIndex'] = peakTimeIndex
@@ -109,7 +115,7 @@ class Decomposite{
                 throw  Error('left right Err')
             }
             const estCurve = await this.getEstCurve(peakTimeIndex,componentMz,result.leftIdx,result.rightIdx,result.referenceMz)
-            est['curve']=estCurve
+            est['curve']={y:estCurve,x:this.scanTimes}
             est['componentMz']=componentMz
             est['peakTimePostion'] = peakTimePosition
             est['peakTimeIndex'] = peakTimeIndex
@@ -123,10 +129,13 @@ class Decomposite{
         const referenceMzIndex = referenceMz-this.mzArr[0]
         let estCurve:number[]=new Array(this.timeLen).fill(0)
         for (let i = leftIdx; i <rightIdx ; i++) {
-            estCurve[i] = this.alignPeaks[i][referenceMz]
+            estCurve[i] = this.alignPeaks[i][referenceMzIndex]
         }
 
+
         for (let i = 0; i < componentMz.length; i++) {
+            let leftBreak=leftIdx
+            let rightBreak = rightIdx
             if(referenceMz!==componentMz[i]){
                 const mz = componentMz[i]
                 const mzIndex=mz -this.mzArr[0]
@@ -135,12 +144,7 @@ class Decomposite{
                 //计算左侧的起始点
                 for (let j = peakTimeIndex; j >leftIdx ; j--) {
                     if (count>1){
-                        for (let k = leftIdx; k <j ; k++) {
-                            estCurve[k] += this.alignPeaks[k][referenceMzIndex]*rate
-                        }
-                        for (let k = j; k < peakTimeIndex; k++) {
-                            estCurve[k] += this.alignPeaks[k][mzIndex]
-                        }
+                        leftBreak = j
                         break
                     }
                     const currRate  = this.alignPeaks[j][mzIndex]/this.alignPeaks[j][referenceMzIndex]
@@ -148,21 +152,29 @@ class Decomposite{
                         count=count+1
                     }
                 }
+                //est 累加
+                for (let j = leftIdx; j <leftBreak ; j++) {
+                    estCurve[j]+=this.alignPeaks[j][referenceMzIndex]*rate
+                }
+                for (let j = leftBreak; j < peakTimeIndex; j++) {
+                    estCurve[j] += this.alignPeaks[j][mzIndex]
+                }
                 //计算右侧的终止点
                 for (let j = peakTimeIndex; j <rightIdx ; j++) {
                     if (count>1){
-                        for (let k = j; k <rightIdx ; k++) {
-                            estCurve[k] += this.alignPeaks[k][referenceMzIndex]*rate
-                        }
-                        for (let k = peakTimeIndex; k < j; k++) {
-                            estCurve[k] += this.alignPeaks[k][mzIndex]
-                        }
+                        rightBreak = j
                         break
                     }
                     const currRate  = this.alignPeaks[j][mzIndex]/this.alignPeaks[j][referenceMzIndex]
                     if(currRate/rate>3){
                         count=count+1
                     }
+                }
+                for (let j = peakTimeIndex; j < rightBreak; j++) {
+                    estCurve[j]+=this.alignPeaks[j][mzIndex]
+                }
+                for (let j = rightBreak; j < rightIdx; j++) {
+                    estCurve[j]+=this.alignPeaks[j][referenceMzIndex]*rate
                 }
 
             }
@@ -188,7 +200,8 @@ class Decomposite{
         for (let i = 0; i < componentMz.length; i++) {
             const mz = componentMz[i]
             const mzIdx = mz-this.mzArr[0]
-            const ic = this.processAlignPeaks.map((peak)=>peak[mzIdx])
+            let ic = this.alignPeaks.map((peak)=>peak[mzIdx])
+            ic = ic.map((intensity)=>intensity>Math.max(...ic)*this.minPeakIntensity?intensity:0)
             const peakIdx=await this.localMax(ic)
             if(peakIdx.length===1){
                 const leftIc = ic.filter((icVal,i)=>this.scanTimes[i]<peakTimePosition)
@@ -217,7 +230,7 @@ class Decomposite{
         for (let i = 0; i < componentMz.length; i++) {
             const mz = componentMz[i]
             const mzIdx = mz-this.mzArr[0]
-            const ic = this.processAlignPeaks.map((peak)=>peak[mzIdx])
+            const ic = this.alignPeaks.map((peak)=>peak[mzIdx])
             const leftIc = ic.filter((icVal,i)=>this.scanTimes[i]<peakTimePosition)
             const rightIc = ic.filter((icVal,i)=>this.scanTimes[i]>peakTimePosition)
             const maxPeakIntensity = ic[peakTimeIndex]
@@ -243,7 +256,7 @@ class Decomposite{
     }
 
     async localMax(peakIntensitys:number[]): Promise<number[]>{
-        const k =2
+        const k =5
         let count = 0
         const arrLen = peakIntensitys.length
         let peakIndex:number[]=[]

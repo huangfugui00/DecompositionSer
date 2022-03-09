@@ -9,8 +9,6 @@ class CDFSer{
         await cdfObj.readCDF()
         const data=cdfObj
         return Utils.responseClient(res,1,200,'移除feeling成功',data);
-
-
     }
 }
 
