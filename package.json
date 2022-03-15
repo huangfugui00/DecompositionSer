@@ -6,6 +6,8 @@
   "scripts": {
     "tsc": "tsc",
     "dev": "ts-node ./src/index.js",
+    "start":"set NODE_ENV=production&& ts-node ./src/index.js",
+    "build": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -15,6 +17,7 @@
     "array-smooth": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "connect-multiparty": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

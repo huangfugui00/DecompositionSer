@@ -10,19 +10,21 @@ const DBConnection = require('./config/db')
 const AdminBro  = require('admin-bro');
 const AdminOption = require('./config/admin')
 const adminRouter = require('./route/admin')
-
+const compression = require('compression')
 DBConnection()
 
 const app = express();
-
+app.use(compression())
+app.get('env')
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))
 
 const admin  = new AdminBro(AdminOption)
 app.use(admin.options.rootPath, adminRouter(admin))
-app.use(express.static('./'))
 app.use(cors())
+// app.use(express.static('./src/static'))
+app.use(express.static(`D:\\project\\js\\initProject-main\\.next`));
 app.use(express.json())
 app.use(bodyParser.json({limit: '50mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
@@ -30,8 +32,19 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 const cdfRouter= require('./route/cdf');
 const decompositeRouter= require('./route/decomposite');
 const versionOne = (routeName) => `/${routeName}`
-app.use(versionOne('cdf'), cdfRouter)
-app.use(versionOne('decomposite'), decompositeRouter)
+app.use(versionOne('api/cdf'), cdfRouter)
+app.use(versionOne('api/decomposite'), decompositeRouter)
+
+if (process.env.NODE_ENV==='production') {
+  console.log('production')
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'out')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'out/index.html'));
+  });
+}
 
 app.use(function (err, req, res, next) {
   console.error(err.stack);
@@ -41,7 +54,7 @@ app.use(function (err, req, res, next) {
 
 const port = process.env.PORT || 3001;
 
-app.listen(port,()=>console.log(port))
+app.listen(port,'0.0.0.0',()=>console.log(port))
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
