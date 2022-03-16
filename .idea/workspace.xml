@@ -6,16 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="769ed3ac-1c88-4cc2-9cd2-34ebeb465021" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/src/access.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/cdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/cdf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/out/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/route/cdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/cdf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/cdf.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/cdf1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/decomposite.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/process.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/type.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/decomposite.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/decomposite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/route/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/route/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/decomposite.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/decomposite.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" afterDir="false" />
@@ -75,7 +72,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/utils" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -86,12 +83,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\project\js\expressSer-main\src" />
       <recent name="D:\project\js\expressSer-main\src\utils" />
+      <recent name="D:\project\js\expressSer-main\src" />
       <recent name="D:\project\webDev\vue-project-21-self\express-youtube\utils" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/../learn/async/main.js" working-dir="$PROJECT_DIR$/../learn/async">
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -115,10 +115,12 @@
     <list>
       <item itemvalue="npm.dev" />
       <item itemvalue="npm.start" />
+      <item itemvalue="Node.js.main.js" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.main.js" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -137,7 +139,8 @@
       <workItem from="1646701860667" duration="38788000" />
       <workItem from="1646874646827" duration="19223000" />
       <workItem from="1646989441088" duration="8425000" />
-      <workItem from="1647140067008" duration="22367000" />
+      <workItem from="1647140067008" duration="22874000" />
+      <workItem from="1647392219171" duration="17284000" />
     </task>
     <servers />
   </component>
@@ -181,26 +184,36 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/controller/cdf.js</url>
           <line>15</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="123" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/controller/cdf.js</url>
           <line>14</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="124" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/controller/cdf.js</url>
-          <line>6</line>
+          <url>file://$PROJECT_DIR$/../learn/async/main.js</url>
+          <line>56</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="126" />
+          <option name="timeStamp" value="162" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/utils/cdf.ts</url>
-          <line>16</line>
+          <url>file://$PROJECT_DIR$/src/utils/decompositeCorr.ts</url>
+          <line>163</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="127" />
+          <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/utils/decompositeCorr.ts</url>
+          <line>162</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/utils/decompositeCorr.ts</url>
+          <line>148</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="195" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

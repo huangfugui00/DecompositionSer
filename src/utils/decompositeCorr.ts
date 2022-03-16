@@ -1,5 +1,6 @@
 import {estType} from './type'
 const Process = require('./process')
+const {sampleCorrelation}=require('simple-statistics')
 
 class Decomposite{
     mzLen:number=0
@@ -9,7 +10,9 @@ class Decomposite{
     alignPeaks:number[][]=[]
     processAlignPeaks:number[][]=[]//处理后的alignPeaks
     minPeakIntensity:number = 0.02
+    maxPeakIntensity:number = 10000
     estList:estType[]=[]
+    threshold=0.1
 
     constructor(mzArr:number[],scanTimes:number[],alignPeaks:number[][]) {
         this.mzArr = mzArr
@@ -27,7 +30,7 @@ class Decomposite{
         return false
     }
 
-
+    
 
 
     async decomposite(){
@@ -38,8 +41,8 @@ class Decomposite{
             //扣背景.每个质量轴先把最小值扣掉
             const minValues = this.mzArr.map((mz,i)=>Math.min(...this.alignPeaks.map((alignpeak)=>alignpeak[i])))
             minValues.forEach((minValue,i)=>this.scanTimes.map((scanTimes,j)=>this.alignPeaks[j][i]-=minValue))
-            // this.alignPeaks = this.alignPeaks.map((alignPeak)=>alignPeak.map(x=>x-Math.min(...alignPeak)))
             const maxPeakIntenity = Math.max(...this.alignPeaks.map((alignPeaks)=>Math.max(...alignPeaks)))
+            this.maxPeakIntensity= maxPeakIntenity
             this.processAlignPeaks = this.alignPeaks.map((alignPeak)=>alignPeak.map((peakIntensity)=>peakIntensity>this.minPeakIntensity*maxPeakIntenity?peakIntensity:0))
             //寻峰
             let peakMz:number[]=[]
@@ -65,19 +68,69 @@ class Decomposite{
 
     }
 
+    async getPeakCurve(mz:number,peakTimePosition:number){
+        let leftIdx = 0
+        let rightIdx = this.timeLen-1
+        const mzIdx = mz - this.mzArr[0]
+        // const peakTimeIndex =
+        const peakTimeIndex = this.getIndex(this.scanTimes,peakTimePosition)
+        let ic = this.alignPeaks.map((peak)=>peak[mzIdx])
+        const maxVal  = Math.max(...ic)
+        ic.forEach((value,index)=>value<maxVal*this.minPeakIntensity?ic[index]=0:ic[index]=ic[index])
+        //计算起始终止位置
+        const leftIc = ic.filter((icVal,i)=>this.scanTimes[i]<peakTimePosition)
+        const rightIc = ic.filter((icVal,i)=>this.scanTimes[i]>peakTimePosition)
+        const maxPeakIntensity = ic[peakTimeIndex]
+
+        for (let j = leftIc.length-1; j >0 ; j--) {
+            if( (leftIc[j]<maxPeakIntensity*0.1 && leftIc[j]<leftIc[j-1]) || leftIc[j]<1 || leftIc[j]>maxPeakIntensity){
+                leftIdx=j
+                break
+            }
+        }
+        for (let j = 0; j < rightIc.length-1; j++) {
+            if((rightIc[j]<maxPeakIntensity*0.1 && rightIc[j]<rightIc[j+1]) || rightIc[j]<1 || rightIc[j]>maxPeakIntensity){
+                rightIdx = j+peakTimeIndex
+                break
+            }
+        }
+        return {leftIdx,rightIdx}
+    }
+
+    async isInSameComponent(lastMz:number,lastTime:number,currMz:number,currTime:number){
+        const {leftIdx:lastLeft,rightIdx:lastRight} = await this.getPeakCurve(lastMz,lastTime)
+        const {leftIdx:currLeft,rightIdx:currRight} = await this.getPeakCurve(currMz,currTime)
+        const leftIdx= lastLeft > currLeft?lastLeft:currLeft
+        const rightIdx= lastRight < currRight?lastRight:currRight
+        let lastPeakCurve = this.alignPeaks.map((peak)=>peak[lastMz-this.mzArr[0]])
+        let currPeakCurve = this.alignPeaks.map((peak)=>peak[currMz-this.mzArr[0]])
+        lastPeakCurve = lastPeakCurve.slice(leftIdx,rightIdx)
+        currPeakCurve = currPeakCurve.slice(leftIdx,rightIdx)
+        const corrVal = sampleCorrelation(lastPeakCurve,currPeakCurve)
+        if(corrVal>0.95){return true}
+        return false
+
+
+    }
+
     async getEst(peakMz:number[],peakTime:number[]){
         const nPeak = peakMz.length
         let tempPeakTime:number[]=[]
         let tempPeakMz:number[]=[]
-        tempPeakTime[0] = peakTime[0]
-        tempPeakMz[0] = peakMz[0]
-        const interVal = this.scanTimes[3]-this.scanTimes[0]
-        for (let i = 1; i < nPeak; i++) {
-            if(Math.abs(peakTime[i]-tempPeakTime[tempPeakTime.length-1])<interVal){
-                tempPeakTime.push(peakTime[i])
-                tempPeakMz.push(peakMz[i])
+        let clearIndexList:number[]=[]
+        const interVal = this.scanTimes[2]-this.scanTimes[0]
+        clearIndexList = [0]
+        tempPeakTime = [peakTime[0]]
+        tempPeakMz = [peakMz[0]]
+        while(peakMz.length>0){
+            for (let i = 1; i < peakMz.length; i++) {
+                if(Math.abs(peakTime[i]-tempPeakTime[tempPeakTime.length-1])<interVal && await this.isInSameComponent(tempPeakMz[tempPeakMz.length-1],tempPeakTime[tempPeakTime.length-1],peakMz[i],peakTime[i])){
+                    tempPeakTime.push(peakTime[i])
+                    tempPeakMz.push(peakMz[i])
+                    clearIndexList.push(i)
+                }
             }
-            else if(tempPeakMz.length>=3){
+            if(tempPeakMz.length>=3){
                 let est={} as estType
                 const peakTimePosition=tempPeakTime.reduce( (a,b)=>a+b,0)/tempPeakTime.length
                 const peakTimeIndex = this.getIndex(this.scanTimes,peakTimePosition)
@@ -86,29 +139,27 @@ class Decomposite{
                 if(!result){
                     throw  Error('left right Err')
                 }
+                const estCurve = await this.getEstCurve(peakTimeIndex,componentMz,result.leftIdx,result.rightIdx,result.referenceMz)
                 let estMassSpectrum = await  this.getEstMassSpectrum(peakTimeIndex,componentMz)
-                let estCurve = await this.getEstCurve(peakTimeIndex,componentMz,result.leftIdx,result.rightIdx,result.referenceMz)
-                const process=new Process()
-                estCurve = process.avgSmooth(estCurve,3)
                 est['massSpectrum'] = {x:this.mzArr,y:estMassSpectrum}
                 est['curve']={y:estCurve,x:this.scanTimes}
                 est['componentMz']=componentMz
                 est['peakTimePostion'] = peakTimePosition
                 est['peakTimeIndex'] = peakTimeIndex
-                this.estList.push(est)
-                tempPeakTime=[]
-                tempPeakMz=[]
-                tempPeakTime[0] = peakTime[i]
-                tempPeakMz[0] = peakMz[i]
-            }
-            else{
-                tempPeakTime=[]
-                tempPeakMz=[]
-                tempPeakTime[0] = peakTime[i]
-                tempPeakMz[0] = peakMz[i]
-            }
-        }
+                if(Math.max(...estCurve)>=this.maxPeakIntensity*this.threshold){
+                    this.estList.push(est)
+                }
 
+
+            }
+
+            peakMz = peakMz.filter((mz,i)=>!clearIndexList.includes(i))
+            peakTime = peakTime.filter((time,i)=>!clearIndexList.includes(i))
+            clearIndexList = [0]
+            tempPeakTime = [peakTime[0]]
+            tempPeakMz = [peakMz[0]]
+
+        }
         if(tempPeakMz.length>=3){
             let est={} as estType
             const peakTimePosition=tempPeakTime.reduce( (a,b)=>a+b,0)/tempPeakTime.length
@@ -120,15 +171,19 @@ class Decomposite{
             }
             const estCurve = await this.getEstCurve(peakTimeIndex,componentMz,result.leftIdx,result.rightIdx,result.referenceMz)
             let estMassSpectrum = await  this.getEstMassSpectrum(peakTimeIndex,componentMz)
+
             est['massSpectrum'] = {x:this.mzArr,y:estMassSpectrum}
             est['curve']={y:estCurve,x:this.scanTimes}
             est['componentMz']=componentMz
             est['peakTimePostion'] = peakTimePosition
             est['peakTimeIndex'] = peakTimeIndex
-            this.estList.push(est)
-            tempPeakTime=[]
-            tempPeakMz=[]
+            if(Math.max(...estCurve)>=this.maxPeakIntensity*this.threshold){
+                this.estList.push(est)
+            }
+
+
         }
+
     }
 
     async getEstMassSpectrum(peakTimeIndex:number,componentMz:number[]): Promise<number[]>{
@@ -280,7 +335,7 @@ class Decomposite{
     }
 
     async localMax(peakIntensitys:number[]): Promise<number[]>{
-        const k =5
+        const k =2
         let count = 0
         const arrLen = peakIntensitys.length
         let peakIndex:number[]=[]
