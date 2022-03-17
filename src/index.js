@@ -6,12 +6,7 @@ var fs = require('fs')
 var path = require('path')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const DBConnection = require('./config/db')
-const AdminBro  = require('admin-bro');
-const AdminOption = require('./config/admin')
-const adminRouter = require('./route/admin')
 const compression = require('compression')
-DBConnection()
 
 const app = express();
 app.use(compression())
@@ -20,8 +15,6 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }))
 
-const admin  = new AdminBro(AdminOption)
-app.use(admin.options.rootPath, adminRouter(admin))
 app.use(cors())
 // app.use(express.static('./src/static'))
 app.use(express.static(`D:\\project\\js\\initProject-main\\.next`));
