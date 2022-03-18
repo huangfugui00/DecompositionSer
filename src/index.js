@@ -17,7 +17,6 @@ app.use(morgan('combined', { stream: accessLogStream }))
 
 app.use(cors())
 // app.use(express.static('./src/static'))
-app.use(express.static(`D:\\project\\js\\initProject-main\\.next`));
 app.use(express.json())
 app.use(bodyParser.json({limit: '50mb', extended: true}))
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))

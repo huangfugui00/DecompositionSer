@@ -7,7 +7,15 @@ class DecompositeSer{
         console.log('decomposite')
         try {
             const data = JSON.parse(req.body.data)
-            const decompositeObj = new DecompositeCorr(data.mzArr,data.scanTimes,data.alignPeaks)
+            const algSel = req.body.algSel
+            let DecompositeObj
+            if(algSel==='similarity'){
+                DecompositeObj = DecompositeCorr
+            }
+            else{
+                DecompositeObj = Decomposite
+            }
+            const decompositeObj = new DecompositeObj(data.mzArr,data.scanTimes,data.alignPeaks)
             await decompositeObj.decomposite()
             return Utils.responseClient(res,1,200,'',decompositeObj.estList);
         }

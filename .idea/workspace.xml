@@ -5,41 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="769ed3ac-1c88-4cc2-9cd2-34ebeb465021" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/expressSer-main.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/decomposite.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/decomposite.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/avatar/6135ebef10c239036b8b9559/thumb-03.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/avatar/61361f77c1cc31c6ef7b39d5/thumb-01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/cdf/mix5-1.cdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/blog-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/blog-inside-post.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/comments-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/comments-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/comments-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/person.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/video1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/video2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/video3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fd9b10163b38646b9f6c/video4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6180fdd010163b38646b9f6e/person.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/618103392749bd6f704fa188/comments-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/618103392749bd6f704fa188/comments-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/618103392749bd6f704fa188/person.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6182041f56323879efbe328a/comments-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6182041f56323879efbe328a/video1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6182041f56323879efbe328a/video2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6182041f56323879efbe328a/video3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/imgs/6182041f56323879efbe328a/video4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/6180fd9b10163b38646b9f6c/comments-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/6180fd9b10163b38646b9f6c/video1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/6180fd9b10163b38646b9f6c/video2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/6180fd9b10163b38646b9f6c/video3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/6180fdd010163b38646b9f6e/person.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/6180fdd010163b38646b9f6e/video2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/618103392749bd6f704fa188/video4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/6181039826d222bc56113937/video1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/thumb/6182041f56323879efbe328a/comments-4.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/access.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/graphql/schemas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../webDev/react/next/crmSer/model/contact.js" afterDir="false" />
