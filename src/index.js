@@ -23,9 +23,11 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
 const cdfRouter= require('./route/cdf');
 const decompositeRouter= require('./route/decomposite');
+const nistRouter= require('./route/nist');
 const versionOne = (routeName) => `/${routeName}`
 app.use(versionOne('api/cdf'), cdfRouter)
 app.use(versionOne('api/decomposite'), decompositeRouter)
+app.use(versionOne('api/nist'), nistRouter)
 
 if (process.env.NODE_ENV==='production') {
   console.log('production')

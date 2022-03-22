@@ -13,7 +13,6 @@ class CDFSer{
 
     async loadCDF(req,res,next){
         console.log('loadCDF')
-        req.body
         return Utils.responseClient(res,1,200,'loadCDF成功');
     }
 }
