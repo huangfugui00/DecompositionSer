@@ -140,7 +140,8 @@ class Decomposite{
                 massSpectrum[i] = this.alignPeaks[peakTimeIndex][i]
             }
             else{
-                massSpectrum[i] =    this.alignPeaks[peakTimeIndex][i] < minIntensity ? this.alignPeaks[peakTimeIndex][i]:0
+                massSpectrum[i] =    this.alignPeaks[peakTimeIndex][i] <0.1*minIntensity ? this.alignPeaks[peakTimeIndex][i]:0
+                // massSpectrum[i] = 0
             }
         }
         const maxIntensity = Math.max(...massSpectrum)

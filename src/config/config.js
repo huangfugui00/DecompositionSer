@@ -18,6 +18,7 @@ module.exports = {
         fil:`${NIST}gctofanalysis.fil`,
         msp:`${NIST}tofanalysis.msp`,
         exe:`${NIST}nistms.exe /INSTRUMENT /PAR=2`,
-        result:`${NIST}SRCRESLT.TXT`
+        result:`${NIST}SRCRESLT.TXT`,
+        ready:`${NIST}SRCREADY.TXT`
     }
   };

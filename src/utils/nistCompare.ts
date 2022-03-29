@@ -1,17 +1,18 @@
 import {nistDataType,componentNistResultType,nistResultType} from './type'
 const fs =require('fs')
+const Utils = require('../utils/util')
 const config = require('../config/config')
 const process = require('child_process');
 const mspPath=config.NIST.msp
 const nistExt = config.NIST.exe
 const filPath = config.NIST.fil
 const resultPath = config.NIST.result
+const readyPath = config.NIST.ready
 
 class NistCompare{
     nComponent:number=0;
     RTs:number[]=[]
     constructor(){
-
     }
     async generateFile(nistData:nistDataType[]){
         //peaklist生成tofanalysis.msp
@@ -29,8 +30,10 @@ class NistCompare{
             let nistStr = `name:Scan ${nist.scanTime}`+'\n'+`Num Peaks: ${nPeak}`+'\n'+peakListStr+'\n\n'
             nistListStr += nistStr
         }
+        if(fs.existsSync(mspPath)){
+            fs.unlinkSync(mspPath)
+        }
         fs.writeFileSync(mspPath,nistListStr);
-
         //移动配置文件
         console.log(__dirname)
         const moveConfigStr=`copy ${__dirname}\\..\\static\\nist\\gctofanalysis.fil ${filPath}`
@@ -40,10 +43,23 @@ class NistCompare{
 
     async execNist(){
         // await zx`echo helloworld`
+        if(fs.existsSync(readyPath)){
+            fs.unlinkSync(readyPath)
+        }
         process.execSync(nistExt)
+        while(true){
+            if(fs.existsSync(readyPath)){
+                break
+            }
+            await Utils.sleep(1000)
+        }
     }
 
     async resultToJson(){
+        if(!fs.existsSync(resultPath)){
+            console.log('not exist SRESULT.TXT FILE')
+           return null
+        }
         const result = fs.readFileSync(resultPath,'utf-8')
         let resultJson:componentNistResultType[]=[]
         if(result){
@@ -56,6 +72,7 @@ class NistCompare{
                 if(line.search('Unknown')===0){
                     if(componentNistResult.nistResult.length>0){
                         resultJson.push(componentNistResult)
+                        console.log('push')
                     }
                     componentNistResult={RT:this.RTs[nCurrComponent],nistResult:[] as nistResultType[]}
                     nCurrComponent++
@@ -99,6 +116,7 @@ class NistCompare{
             }
             if(componentNistResult.nistResult.length>0){
                 resultJson.push(componentNistResult)
+                console.log('push last')
             }
             return resultJson
         }
