@@ -3,6 +3,7 @@ const fs =require('fs')
 const Utils = require('../utils/util')
 const config = require('../config/config')
 const process = require('child_process');
+
 const mspPath=config.NIST.msp
 const nistExt = config.NIST.exe
 const filPath = config.NIST.fil
@@ -35,9 +36,12 @@ class NistCompare{
         }
         fs.writeFileSync(mspPath,nistListStr);
         //移动配置文件
-        console.log(__dirname)
-        const moveConfigStr=`copy ${__dirname}\\..\\static\\nist\\gctofanalysis.fil ${filPath}`
-        process.execSync(moveConfigStr)
+        // @ts-ignore
+        const rootPath = global.rootPath
+        fs.writeFileSync(filPath,fs.readFileSync(`${rootPath}\\src\\static\\nist\\gctofanalysis.fil`));
+
+        // const moveConfigStr=`copy ${rootPath}\\src\\static\\nist\\gctofanalysis.fil ${filPath}`
+        // process.execSync(moveConfigStr)
 
     }
 

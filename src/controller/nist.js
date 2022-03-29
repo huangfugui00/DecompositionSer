@@ -10,7 +10,6 @@ class Nist{
             await nistCompareObj.generateFile(nistData)
             await nistCompareObj.execNist()
             const resultJson = await nistCompareObj.resultToJson()
-            console.log(resultJson)
             if(resultJson){
                 return Utils.responseClient(res,1,200,'生成NIST峰文件成功',resultJson);
             }

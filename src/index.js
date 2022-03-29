@@ -29,9 +29,9 @@ app.use(versionOne('api/cdf'), cdfRouter)
 app.use(versionOne('api/decomposite'), decompositeRouter)
 app.use(versionOne('api/nist'), nistRouter)
 
-if (process.env.NODE_ENV==='production') {
+console.log(process.env.NODE_ENV)
+if (process.env.NODE_ENV!=='production') {
   console.log('production')
-  // Serve any static files
   app.use(express.static(path.join(__dirname, 'out')));
 
   // Handle React routing, return all requests to React app
@@ -39,6 +39,9 @@ if (process.env.NODE_ENV==='production') {
     res.sendFile(path.join(__dirname, 'out/index.html'));
   });
 }
+
+global.rootPath = process.cwd()
+console.log(global.rootPath)
 
 app.use(function (err, req, res, next) {
   console.error(err.stack);
@@ -49,7 +52,6 @@ app.use(function (err, req, res, next) {
 const port = process.env.PORT || 3001;
 
 app.listen(port,'0.0.0.0',()=>console.log(port))
-
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
   console.log(`Error: ${err.message}`)
