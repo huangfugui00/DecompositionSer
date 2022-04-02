@@ -25,5 +25,7 @@ yarn-error.log*
 
 /data
 
-/src/out
-/src/access.log
+src/out
+src/access.log
+/.adminbro
+/.idea

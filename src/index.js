@@ -30,7 +30,7 @@ app.use(versionOne('api/decomposite'), decompositeRouter)
 app.use(versionOne('api/nist'), nistRouter)
 
 console.log(process.env.NODE_ENV)
-if (process.env.NODE_ENV!=='production') {
+if (process.env.NODE_ENV==='production') {
   console.log('production')
   app.use(express.static(path.join(__dirname, 'out')));
 
